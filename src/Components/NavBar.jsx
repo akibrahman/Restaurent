@@ -1,4 +1,3 @@
-import "../Css/NavBar.css";
 import cart from "/icon/cart.png";
 import user from "/icon/user.png";
 

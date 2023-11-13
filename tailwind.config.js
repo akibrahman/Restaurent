@@ -8,6 +8,10 @@ export default {
         raleway: "'Raleway', sans-serif",
         inter: "'Inter', sans-serif",
       },
+      backgroundImage: {
+        "home-about": "url('/home/chef-service.jpg')",
+        "home-featured": "url('/home/featured.jpg')",
+      },
     },
   },
   plugins: [],

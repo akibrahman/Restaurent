@@ -1,5 +1,6 @@
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "../Css/HomeCarousel.css";
 import slide1 from "/home/01.jpg";
 import slide2 from "/home/02.jpg";
 import slide3 from "/home/03.jpg";

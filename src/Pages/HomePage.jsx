@@ -1,14 +1,21 @@
-import Heading from "../Components/Heading";
+import CallUs from "../Components/CallUs";
+import ChefRecommends from "../Components/ChefRecommends";
+import Featured from "../Components/Featured";
+import FoodCarousel from "../Components/FoodCarousel";
+import HomeAbout from "../Components/HomeAbout";
 import HomeCarousel from "../Components/HomeCarousel";
+import Menu from "../Components/Menu";
 
 const HomePage = () => {
   return (
     <div>
       <HomeCarousel></HomeCarousel>
-      <Heading
-        subHeading={"---From 11:00am to 10:00pm---"}
-        heading={"ORDER ONLINE"}
-      ></Heading>
+      <FoodCarousel></FoodCarousel>
+      <HomeAbout></HomeAbout>
+      <Menu></Menu>
+      <CallUs></CallUs>
+      <ChefRecommends></ChefRecommends>
+      <Featured></Featured>
     </div>
   );
 };
