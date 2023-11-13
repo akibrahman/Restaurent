@@ -1,7 +1,14 @@
+import Heading from "../Components/Heading";
+import HomeCarousel from "../Components/HomeCarousel";
+
 const HomePage = () => {
   return (
     <div>
-      <p>This is HomePage</p>
+      <HomeCarousel></HomeCarousel>
+      <Heading
+        subHeading={"---From 11:00am to 10:00pm---"}
+        heading={"ORDER ONLINE"}
+      ></Heading>
     </div>
   );
 };
