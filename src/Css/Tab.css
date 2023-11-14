@@ -1,0 +1,29 @@
+.react-tabs__tab-list {
+  border: none;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding: 40px 0;
+  user-select: none;
+}
+.react-tabs__tab {
+  color: #000;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.react-tabs__tab--selected {
+  border-color: transparent;
+  color: #bb8506;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border-bottom: 3px solid #bb8506;
+}
+.react-tabs__tab:focus:after {
+  position: inherit;
+}

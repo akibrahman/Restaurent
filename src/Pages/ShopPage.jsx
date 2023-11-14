@@ -3,6 +3,7 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import CoverBanner from "../Components/CoverBanner";
 import FoodCard from "../Components/FoodCard";
+import "../Css/Tab.css";
 import useAllMenu from "../Hooks/useAllMenu";
 
 const ShopPage = () => {
