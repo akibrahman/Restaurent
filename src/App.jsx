@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import Footer from "./Components/Footer";
 import NavBar from "./Components/NavBar";
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <div className="relative">
       <NavBar></NavBar>
       <Outlet></Outlet>
+      <Footer></Footer>
     </div>
   );
 }

@@ -5,6 +5,7 @@ import FoodCarousel from "../Components/FoodCarousel";
 import HomeAbout from "../Components/HomeAbout";
 import HomeCarousel from "../Components/HomeCarousel";
 import Menu from "../Components/Menu";
+import Reviews from "../Components/Reviews";
 
 const HomePage = () => {
   return (
@@ -16,6 +17,7 @@ const HomePage = () => {
       <CallUs></CallUs>
       <ChefRecommends></ChefRecommends>
       <Featured></Featured>
+      <Reviews></Reviews>
     </div>
   );
 };

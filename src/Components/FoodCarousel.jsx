@@ -17,7 +17,9 @@ const FoodCarousel = () => {
         heading={"ORDER ONLINE"}
       ></Heading>
       <Swiper
+        className="select-none"
         slidesPerView={3}
+        spaceBetween={10}
         pagination={{
           clickable: true,
         }}
