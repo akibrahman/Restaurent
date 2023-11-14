@@ -12,9 +12,6 @@ const HomeCarousel = () => {
   return (
     <Carousel
       showArrows={true}
-      //   onChange={onChange}
-      //   onClickItem={onClickItem}
-      //   onClickThumb={onClickThumb}
       autoPlay={true}
       interval={2000}
       infiniteLoop={true}

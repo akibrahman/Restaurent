@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import cart from "/icon/cart.png";
 import user from "/icon/user.png";
 
@@ -10,11 +11,15 @@ const NavBar = () => {
           Restaurant
         </p>
       </div>
-      <div className="flex items-center gap-3">
-        <p className="text-white font-bold capitalize">Home</p>
+      <div className="flex items-center gap-4">
+        <NavLink to="/">
+          <p className="text-white font-bold capitalize">Home</p>
+        </NavLink>
         <p className="text-white font-bold capitalize">contact us</p>
         <p className="text-white font-bold capitalize">dashboard</p>
-        <p className="text-white font-bold capitalize">our menu</p>
+        <NavLink to="/menu">
+          <p className="text-white font-bold capitalize">our menu</p>
+        </NavLink>
         <p className="text-white font-bold capitalize">our shop</p>
         <img className="w-12" src={cart} alt="" />
         <p className="text-white font-bold capitalize">sign out</p>

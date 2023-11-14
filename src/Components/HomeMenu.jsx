@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Heading from "./Heading";
 
-const Menu = () => {
+const HomeMenu = () => {
   const [items, setItems] = useState([]);
   useEffect(() => {
     axios
@@ -47,4 +47,4 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+export default HomeMenu;

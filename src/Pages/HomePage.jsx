@@ -4,7 +4,7 @@ import Featured from "../Components/Featured";
 import FoodCarousel from "../Components/FoodCarousel";
 import HomeAbout from "../Components/HomeAbout";
 import HomeCarousel from "../Components/HomeCarousel";
-import Menu from "../Components/Menu";
+import HomeMenu from "../Components/HomeMenu";
 import Reviews from "../Components/Reviews";
 
 const HomePage = () => {
@@ -13,7 +13,7 @@ const HomePage = () => {
       <HomeCarousel></HomeCarousel>
       <FoodCarousel></FoodCarousel>
       <HomeAbout></HomeAbout>
-      <Menu></Menu>
+      <HomeMenu></HomeMenu>
       <CallUs></CallUs>
       <ChefRecommends></ChefRecommends>
       <Featured></Featured>
