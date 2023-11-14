@@ -1,9 +1,14 @@
-const CoverBanner = ({ title, subTitle, isTop = false }) => {
+const CoverBanner = ({
+  title,
+  subTitle,
+  bg = "bg-home-about",
+  isTop = false,
+}) => {
   return (
     <div
       className={`${
         isTop ? "pt-40" : ""
-      } bg-home-about text-center py-24 bg-cover bg-center text-white`}
+      } ${bg}  text-center py-24 bg-cover bg-center text-white`}
     >
       <div
         className={` ${

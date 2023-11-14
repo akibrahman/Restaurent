@@ -20,7 +20,9 @@ const NavBar = () => {
         <NavLink to="/menu">
           <p className="text-white font-bold capitalize">our menu</p>
         </NavLink>
-        <p className="text-white font-bold capitalize">our shop</p>
+        <NavLink to="/shop/salad">
+          <p className="text-white font-bold capitalize">our shop</p>
+        </NavLink>
         <img className="w-12" src={cart} alt="" />
         <p className="text-white font-bold capitalize">sign out</p>
         <img className="rounded-full" src={user} alt="" />
