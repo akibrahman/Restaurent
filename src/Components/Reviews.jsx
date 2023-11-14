@@ -14,7 +14,7 @@ const Reviews = () => {
   const [reviews, setReviews] = useState(null);
   useEffect(() => {
     axios
-      .get("/reviews.json")
+      .get("http://localhost:1000/all-reviews")
       .then((responce) => setReviews(responce.data))
       .catch((error) => console.log(error));
   }, []);

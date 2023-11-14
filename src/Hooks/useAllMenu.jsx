@@ -5,7 +5,7 @@ const useAllMenu = () => {
   const [items, setItems] = useState([]);
   useEffect(() => {
     axios
-      .get("/menu.json")
+      .get("http://localhost:1000/all-menu")
       .then((res) => {
         setItems(res.data);
       })

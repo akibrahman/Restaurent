@@ -17,6 +17,7 @@ const MenuPage = () => {
         title={"OUR MENU"}
         subTitle={"Would you like to try a dish?"}
         isTop={true}
+        bgUrl="/home/chef-service.jpg"
       ></CoverBanner>
       <Heading
         subHeading={"---Do not miss---"}
@@ -28,7 +29,7 @@ const MenuPage = () => {
         subTitle={
           "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
         }
-        bg="bg-[url('/menu/dessert-bg.jpeg')]"
+        bgUrl="/menu/dessert-bg.jpeg"
       ></CoverBanner>
       <MenuMenu items={desserts} category="desserts"></MenuMenu>
       <CoverBanner
@@ -36,7 +37,7 @@ const MenuPage = () => {
         subTitle={
           "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
         }
-        bg="bg-[url('/menu/pizza-bg.jpg')]"
+        bgUrl="/menu/pizza-bg.jpg"
       ></CoverBanner>
       <MenuMenu items={pizzas} category="pizza"></MenuMenu>
       <CoverBanner
@@ -44,7 +45,7 @@ const MenuPage = () => {
         subTitle={
           "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
         }
-        bg="bg-[url('/menu/salad-bg.jpg')]"
+        bgUrl="/menu/salad-bg.jpg"
       ></CoverBanner>
       <MenuMenu items={salads} category="salad"></MenuMenu>
       <CoverBanner
@@ -52,7 +53,7 @@ const MenuPage = () => {
         subTitle={
           "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
         }
-        bg="bg-[url('/menu/soup-bg.jpg')]"
+        bgUrl="/menu/soup-bg.jpg"
       ></CoverBanner>
       <MenuMenu items={soups} category="soups"></MenuMenu>
       <CoverBanner
@@ -60,7 +61,7 @@ const MenuPage = () => {
         subTitle={
           "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
         }
-        bg="bg-[url('/menu/banner3.jpg')]"
+        bgUrl="/menu/banner3.jpg"
       ></CoverBanner>
       <MenuMenu items={drinks} category="drinks"></MenuMenu>
     </div>
