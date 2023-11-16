@@ -1,6 +1,9 @@
 const FoodCard = ({ item }) => {
   return (
-    <div className="flex flex-col items-center gap-3 bg-[#F3F3F3] text-[#151515] font-inter pb-4">
+    <div className="flex flex-col items-center gap-3 bg-[#F3F3F3] text-[#151515] font-inter pb-4 relative">
+      <p className="absolute right-2 top-2 text-white font-inter font-semibold px-4 py-2 bg-[#111827]">
+        ${item.price}
+      </p>
       <img className="" src={item.image} alt="" />
       <p className="font-semibold text-2xl text-center h-[80px] flex items-center justify-center">
         {item.name}

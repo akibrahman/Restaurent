@@ -1,43 +1,49 @@
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
-import { loadCaptchaEnginge, validateCaptcha } from "react-simple-captcha";
+import app from "../../firebase.config";
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [captchaMached, setCaptchaMached] = useState(false);
-  const [captchaAlert, setCaptchaAlert] = useState(false);
-  const [captchaEngineStarter, setCaptchaEngineStarter] = useState(false);
-  //! Captcha RealTime Checker
-  const captchaChecker = (captcha) => {
-    if (captcha.length >= 7) {
-      if (validateCaptcha(captcha) == true) {
-        setCaptchaMached(true);
-      } else {
-        setCaptchaMached(false);
-        setCaptchaAlert(true);
-        setTimeout(() => {
-          setCaptchaAlert(false);
-        }, 2000);
-      }
-    } else {
-      setCaptchaMached(false);
-    }
-  };
-  //! Generate Captcha
+  const auth = getAuth(app);
+  const [user, setUser] = useState(null);
+  //! On Auth State Change
   useEffect(() => {
-    loadCaptchaEnginge(7);
-  }, [captchaEngineStarter]);
+    const un = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);
+        console.log(currentUser);
+      } else {
+        setUser(null);
+      }
+    });
+    return () => un();
+  }, []);
+  //! Registration
+  const registration = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
   //! Log In
-  const logIn = () => {
-    alert("Logged In");
+  const logIn = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+  //! Log Out
+  const logOut = () => {
+    return signOut(auth);
   };
   const AuthInfo = {
+    auth,
     logIn,
-    captchaMached,
-    captchaChecker,
-    captchaAlert,
-    captchaEngineStarter,
-    setCaptchaEngineStarter,
+    registration,
+    logOut,
+    user,
+    setUser,
   };
   return (
     <AuthContext.Provider value={AuthInfo}>{children}</AuthContext.Provider>

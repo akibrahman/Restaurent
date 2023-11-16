@@ -1,8 +1,18 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "./AuthProvider";
 import cart from "/icon/cart.png";
-import user from "/icon/user.png";
+import noUser from "/icon/user.png";
 
 const NavBar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <nav className="bg-[rgba(21,21,21,0.5)] px-14 py-2 font-inter flex items-center justify-between absolute z-10 w-full">
       <div className="font-cinzel">
@@ -24,10 +34,23 @@ const NavBar = () => {
           <p className="text-white font-bold capitalize">our shop</p>
         </NavLink>
         <img className="w-12" src={cart} alt="" />
-        <NavLink to="/login">
-          <p className="text-white font-bold capitalize">Log In</p>
-        </NavLink>
-        <img className="rounded-full" src={user} alt="" />
+        {user ? (
+          <p
+            onClick={handleLogOut}
+            className="text-white font-bold capitalize cursor-pointer"
+          >
+            Log Out
+          </p>
+        ) : (
+          <NavLink to="/login">
+            <p className="text-white font-bold capitalize">Log In</p>
+          </NavLink>
+        )}
+        <img
+          className="rounded-full w-10 h-10"
+          src={user ? user.photoURL : noUser}
+          alt=""
+        />
       </div>
     </nav>
   );

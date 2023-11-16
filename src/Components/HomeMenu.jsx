@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useAllMenu from "../Hooks/useAllMenu";
 import Heading from "./Heading";
 
@@ -35,9 +36,12 @@ const HomeMenu = () => {
           ))}
       </div>
       <div className="flex justify-center">
-        <button className="text-[#1F2937] font-inter font-medium border-b-4 border-[#1F2937] px-7 py-3 rounded-lg duration-300 hover:bg-[#1F2937] hover:text-white active:scale-90">
-          View Full Menu
-        </button>
+        <Link to="/menu">
+          {" "}
+          <button className="text-[#1F2937] font-inter font-medium border-b-4 border-[#1F2937] px-7 py-3 rounded-lg duration-300 hover:bg-[#1F2937] hover:text-white active:scale-90">
+            View Full Menu
+          </button>
+        </Link>
       </div>
     </div>
   );
