@@ -24,7 +24,9 @@ const NavBar = () => {
           <p className="text-white font-bold capitalize">our shop</p>
         </NavLink>
         <img className="w-12" src={cart} alt="" />
-        <p className="text-white font-bold capitalize">sign out</p>
+        <NavLink to="/login">
+          <p className="text-white font-bold capitalize">Log In</p>
+        </NavLink>
         <img className="rounded-full" src={user} alt="" />
       </div>
     </nav>

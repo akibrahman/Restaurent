@@ -22,6 +22,7 @@ const ShopPage = () => {
         title="OUR SHOP"
         subTitle="Would you like to try a dish?"
         isTop={true}
+        bgUrl="/shop/banner2.jpg"
       ></CoverBanner>
       <div className="">
         <Tabs defaultIndex={initialTab}>

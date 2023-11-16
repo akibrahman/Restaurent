@@ -1,13 +1,26 @@
-import { Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Outlet, useLocation } from "react-router-dom";
 import Footer from "./Components/Footer";
 import NavBar from "./Components/NavBar";
 
 function App() {
+  const [hideNavFooter, setHideNavFooter] = useState(false);
+  const location = useLocation();
+  useEffect(() => {
+    if (
+      location.pathname.includes("login") ||
+      location.pathname.includes("registration")
+    ) {
+      setHideNavFooter(true);
+    } else {
+      setHideNavFooter(false);
+    }
+  }, [location.pathname]);
   return (
     <div className="relative">
-      <NavBar></NavBar>
+      {hideNavFooter || <NavBar></NavBar>}
       <Outlet></Outlet>
-      <Footer></Footer>
+      {hideNavFooter || <Footer></Footer>}
     </div>
   );
 }
