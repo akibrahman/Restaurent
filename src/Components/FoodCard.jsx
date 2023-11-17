@@ -16,6 +16,9 @@ const FoodCard = ({ item }) => {
       const addedItem = {
         itemId: item._id,
         customer: user.email,
+        name: item.name,
+        image: item.image,
+        price: item.price,
       };
       axiosInstance
         .post("/carts", addedItem)

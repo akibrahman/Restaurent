@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useCart from "../Hooks/useCart";
 import { AuthContext } from "./AuthProvider";
 import cart from "/icon/cart.png";
@@ -35,12 +35,15 @@ const NavBar = () => {
         <NavLink to="/shop/salad">
           <p className="text-white font-bold capitalize">our shop</p>
         </NavLink>
-        <div className="relative">
-          <img className="w-12" src={cart} alt="" />
-          <p className="absolute right-[2px] bottom-[2px] bg-red-600 rounded-full text-sm w-[18px] h-[18px] flex items-center justify-center">
-            {user ? (isLoading ? "0" : carts.length) : "!"}
-          </p>
-        </div>
+        <Link to="/dashboard/my-cart">
+          {" "}
+          <div className="relative">
+            <img className="w-12" src={cart} alt="" />
+            <p className="absolute right-[2px] bottom-[2px] bg-red-600 rounded-full text-sm w-[18px] h-[18px] flex items-center justify-center">
+              {user ? (isLoading ? "0" : carts.length) : "!"}
+            </p>
+          </div>
+        </Link>
         {user ? (
           <p
             onClick={handleLogOut}
