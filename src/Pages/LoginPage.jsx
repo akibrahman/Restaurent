@@ -6,7 +6,7 @@ import {
   FaGithub,
   FaGoogle,
 } from "react-icons/fa6";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   LoadCanvasTemplate,
   loadCaptchaEnginge,
@@ -25,6 +25,7 @@ const LoginPage = () => {
   } = useForm();
   const captchaField = useRef();
   const navigate = useNavigate();
+  const location = useLocation();
   //!
   const [captchaMatched, setCaptchaMatched] = useState(false);
   const [captchaAlert, setCaptchaAlert] = useState(false);
@@ -56,7 +57,7 @@ const LoginPage = () => {
   const handleLogin = (data) => {
     logIn(data.email, data.password)
       .then(() => {
-        navigate("/");
+        navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
         console.log(error);
@@ -144,7 +145,7 @@ const LoginPage = () => {
           </div>
           <button
             className="w-[420px] rounded-md py-3 font-semibold text-white bg-[#D1A054] duration-300 select-none cursor-pointer active:scale-90 disabled:bg-slate-300 disabled:pointer-events-none"
-            disabled={!captchaMatched}
+            disabled={captchaMatched}
           >
             Log In
           </button>

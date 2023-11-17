@@ -4,7 +4,7 @@ import MenuMenu from "../Components/MenuMenu";
 import useAllMenu from "../Hooks/useAllMenu";
 
 const MenuPage = () => {
-  const [items] = useAllMenu();
+  const { items } = useAllMenu();
   const todaysOffer = items.filter((item) => item.category === "offered");
   const desserts = items.filter((item) => item.category === "dessert");
   const salads = items.filter((item) => item.category === "salad");

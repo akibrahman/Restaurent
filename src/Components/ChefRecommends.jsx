@@ -3,7 +3,7 @@ import FoodCard from "./FoodCard";
 import Heading from "./Heading";
 
 const ChefRecommends = () => {
-  const [items] = useAllMenu();
+  const { items } = useAllMenu();
   //! Random Item Picker
   const getRandomItems = (array, count) => {
     const shuffledArray = [...array];

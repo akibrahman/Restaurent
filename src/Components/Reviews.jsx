@@ -1,5 +1,4 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import ReactStarsRating from "react-awesome-stars-rating";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -7,24 +6,27 @@ import "swiper/css/pagination";
 import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "../Css/Reviews.css";
+import useAxios from "../Hooks/useAxios";
 import Heading from "./Heading";
 import quote from "/icon/review.png";
 
 const Reviews = () => {
-  const [reviews, setReviews] = useState(null);
-  useEffect(() => {
-    axios
-      .get("http://localhost:1000/all-reviews")
-      .then((responce) => setReviews(responce.data))
-      .catch((error) => console.log(error));
-  }, []);
+  const axiosInstance = useAxios();
+  const { data: reviews, isLoading } = useQuery({
+    queryKey: ["reviews"],
+    queryFn: async () => {
+      const responce = await axiosInstance.get("/all-reviews");
+      return responce.data;
+    },
+  });
+
   return (
     <div className="w-[70%] mx-auto mb-[100px]">
       <Heading
         subHeading={"---What Our Clients Say---"}
         heading={"TESTIMONIALS"}
       ></Heading>
-      {reviews && (
+      {!isLoading ? (
         <Swiper
           loop={true}
           autoplay={{
@@ -56,6 +58,8 @@ const Reviews = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+      ) : (
+        <p>Loading</p>
       )}
     </div>
   );

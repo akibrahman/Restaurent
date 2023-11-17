@@ -3,7 +3,7 @@ import useAllMenu from "../Hooks/useAllMenu";
 import Heading from "./Heading";
 
 const HomeMenu = () => {
-  const [items] = useAllMenu();
+  const { items } = useAllMenu();
   const popularItems = items
     .filter((item) => item.category === "popular")
     .slice(0, 6);

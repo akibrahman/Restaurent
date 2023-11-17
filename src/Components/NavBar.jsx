@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import useCart from "../Hooks/useCart";
 import { AuthContext } from "./AuthProvider";
 import cart from "/icon/cart.png";
 import noUser from "/icon/user.png";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const { carts, isLoading } = useCart();
   const handleLogOut = () => {
     logOut()
       .then()
@@ -33,7 +35,12 @@ const NavBar = () => {
         <NavLink to="/shop/salad">
           <p className="text-white font-bold capitalize">our shop</p>
         </NavLink>
-        <img className="w-12" src={cart} alt="" />
+        <div className="relative">
+          <img className="w-12" src={cart} alt="" />
+          <p className="absolute right-[2px] bottom-[2px] bg-red-600 rounded-full text-sm w-[18px] h-[18px] flex items-center justify-center">
+            {user ? (isLoading ? "0" : carts.length) : "!"}
+          </p>
+        </div>
         {user ? (
           <p
             onClick={handleLogOut}

@@ -10,7 +10,7 @@ const ShopPage = () => {
   const currentCategory = useParams();
   const category = ["salad", "pizza", "soups", "desserts", "drinks"];
   const initialTab = category.indexOf(currentCategory.id);
-  const [items] = useAllMenu();
+  const { items } = useAllMenu();
   const salads = items.filter((item) => item.category === "salad");
   const pizzas = items.filter((item) => item.category === "pizza");
   const soups = items.filter((item) => item.category === "soup");

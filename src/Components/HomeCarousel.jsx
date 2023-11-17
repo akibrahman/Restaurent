@@ -13,7 +13,7 @@ const HomeCarousel = () => {
     <Carousel
       showArrows={true}
       autoPlay={true}
-      interval={2000}
+      interval={3000}
       infiniteLoop={true}
       showStatus={false}
       stopOnHover={false}

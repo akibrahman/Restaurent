@@ -2,7 +2,7 @@ import axios from "axios";
 import { updateProfile } from "firebase/auth";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Components/AuthProvider";
 import img from "/others/login.png";
 
@@ -14,6 +14,7 @@ const RegistrationPage = () => {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
+  const location = useLocation();
   const [preview, setPreview] = useState(null);
   //! BASE64 Convertor
   const convertBase64 = (file) => {
@@ -57,7 +58,7 @@ const RegistrationPage = () => {
               photoURL: responce.data.data.display_url,
             })
               .then(() => {
-                navigate("/");
+                navigate(`${location.state ? location.state : "/"}`);
               })
               .catch((error) => {
                 console.log(error);

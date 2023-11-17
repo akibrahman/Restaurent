@@ -1,16 +1,17 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import useAxios from "./useAxios";
 
 const useAllMenu = () => {
-  const [items, setItems] = useState([]);
-  useEffect(() => {
-    axios
-      .get("http://localhost:1000/all-menu")
-      .then((res) => {
-        setItems(res.data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-  return [items];
+  const axiosInstance = useAxios();
+
+  const { data: items = [] } = useQuery({
+    queryKey: ["allMenu"],
+    queryFn: async () => {
+      const responce = await axiosInstance.get("/all-menu");
+      return responce.data;
+    },
+  });
+
+  return { items };
 };
 export default useAllMenu;
