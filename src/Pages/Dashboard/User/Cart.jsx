@@ -1,8 +1,8 @@
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
-import Heading from "../../Components/Heading";
-import useAxios from "../../Hooks/useAxios";
-import useCart from "../../Hooks/useCart";
+import Heading from "../../../Components/Heading";
+import useAxios from "../../../Hooks/useAxios";
+import useCart from "../../../Hooks/useCart";
 
 const Cart = () => {
   const { carts, isLoading, refetch } = useCart();

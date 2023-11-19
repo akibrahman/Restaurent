@@ -3,11 +3,14 @@ import { updateProfile } from "firebase/auth";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import { AuthContext } from "../Components/AuthProvider";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 import img from "/others/login.png";
 
 const RegistrationPage = () => {
   const { auth, registration } = useContext(AuthContext);
+  const axiosPublic = useAxiosPublic();
   const {
     register,
     handleSubmit,
@@ -43,6 +46,7 @@ const RegistrationPage = () => {
         imgData
       )
       .then((responce) => {
+        //! Important
         // const photoData = {
         //   imgbbID: responce.data.data.id,
         //   fileName: responce.data.data.image.filename,
@@ -58,7 +62,23 @@ const RegistrationPage = () => {
               photoURL: responce.data.data.display_url,
             })
               .then(() => {
-                navigate(`${location.state ? location.state : "/"}`);
+                axiosPublic
+                  .post("/users", {
+                    userName: data.name,
+                    userEmail: data.email,
+                    userRole: "General",
+                  })
+                  .then(() => {
+                    navigate(`${location.state ? location.state : "/"}`);
+                    Swal.fire({
+                      position: "top-end",
+                      icon: "success",
+                      title: "Successfully Registered",
+                      showConfirmButton: false,
+                      timer: 1500,
+                    });
+                  })
+                  .catch((error) => console.log(error));
               })
               .catch((error) => {
                 console.log(error);

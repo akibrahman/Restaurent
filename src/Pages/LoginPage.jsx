@@ -1,11 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import {
-  FaCircleExclamation,
-  FaFacebookF,
-  FaGithub,
-  FaGoogle,
-} from "react-icons/fa6";
+import { FaCircleExclamation } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   LoadCanvasTemplate,
@@ -13,6 +8,7 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { AuthContext } from "../Components/AuthProvider";
+import SocialLogin from "../Components/SocialLogin";
 import "../Css/Login.css";
 import img from "/others/login.png";
 
@@ -155,11 +151,7 @@ const LoginPage = () => {
             </p>
           </Link>
           <p className="text-[#444] font-medium">Or sign in with</p>
-          <div className="flex gap-8 text-[#444]">
-            <FaFacebookF className="rounded-full border-2 border-[#444] w-10 h-10 p-2 cursor-pointer duration-300 select-none active:scale-90" />
-            <FaGoogle className="rounded-full border-2 border-[#444] w-10 h-10 p-2 cursor-pointer duration-300 select-none active:scale-90" />
-            <FaGithub className="rounded-full border-2 border-[#444] w-10 h-10 p-2 cursor-pointer duration-300 select-none active:scale-90" />
-          </div>
+          <SocialLogin></SocialLogin>
         </form>
       </div>
     </div>

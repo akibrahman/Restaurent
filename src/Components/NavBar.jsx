@@ -1,12 +1,15 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import useCart from "../Hooks/useCart";
+import useRole from "../Hooks/useRole";
 import { AuthContext } from "./AuthProvider";
 import cart from "/icon/cart.png";
+import settings from "/icon/settings.png";
 import noUser from "/icon/user.png";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const { role } = useRole();
   const { carts, isLoading } = useCart();
   const handleLogOut = () => {
     logOut()
@@ -35,15 +38,21 @@ const NavBar = () => {
         <NavLink to="/shop/salad">
           <p className="text-white font-bold capitalize">our shop</p>
         </NavLink>
-        <Link to="/dashboard/my-cart">
-          {" "}
-          <div className="relative">
-            <img className="w-12" src={cart} alt="" />
-            <p className="absolute right-[2px] bottom-[2px] bg-red-600 rounded-full text-sm w-[18px] h-[18px] flex items-center justify-center">
-              {user ? (isLoading ? "0" : carts.length) : "!"}
-            </p>
-          </div>
-        </Link>
+        {role === "Admin" ? (
+          <Link to="/dashboard/all-users">
+            <img className="w-9" src={settings} alt="" />
+          </Link>
+        ) : (
+          <Link to="/dashboard/my-cart">
+            <div className="relative">
+              <img className="w-12" src={cart} alt="" />
+              <p className="absolute right-[2px] bottom-[2px] bg-red-600 rounded-full text-sm w-[18px] h-[18px] flex items-center justify-center">
+                {user ? (isLoading ? "0" : carts.length) : "!"}
+              </p>
+            </div>
+          </Link>
+        )}
+
         {user ? (
           <p
             onClick={handleLogOut}
