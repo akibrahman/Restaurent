@@ -12,6 +12,7 @@ const useCart = () => {
     refetch,
   } = useQuery({
     queryKey: ["carts", user?.email],
+    enabled: user ? true : false,
     queryFn: async () => {
       const responce = await axiosInstance.get(`/carts?email=${user.email}`);
       return responce.data;

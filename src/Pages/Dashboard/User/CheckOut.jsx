@@ -9,13 +9,13 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Components/AuthProvider";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import useAxios from "../../../Hooks/useAxios";
 import useCart from "../../../Hooks/useCart";
 
 const CheckOut = () => {
   const { user } = useContext(AuthContext);
   const stripe = useStripe();
-  const axiosInstance = useAxiosPublic();
+  const axiosInstance = useAxios();
 
   const elements = useElements();
   const { carts, refetch: cartLoader } = useCart();
@@ -105,6 +105,10 @@ const CheckOut = () => {
             timer: 1500,
           });
           const orderData = {
+            email: user.email,
+            name: user.displayName,
+            status: "pending",
+            paymentDate: Date.now(),
             paymentMethodDetails: paymentMethod,
             paymentConfirmDetails: paymentIntent,
             cartIDs: carts.map((item) => item._id),

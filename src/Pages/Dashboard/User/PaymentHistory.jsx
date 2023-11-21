@@ -1,7 +1,10 @@
+import moment from "moment/moment";
 import Heading from "../../../Components/Heading";
+import usePaymentHispory from "../../../Hooks/usePaymentHispory";
 
 const PaymentHistory = () => {
-  const payments = [1, 2, 3, 4, 5];
+  const { data: payments, isLoading } = usePaymentHispory();
+  if (isLoading) return <p>Loading.......</p>;
   return (
     <div>
       <Heading
@@ -37,12 +40,19 @@ const PaymentHistory = () => {
                   </th>
 
                   <td className="flex items-center justify-center">
-                    {"Email"}
+                    {payment.email}
                   </td>
-                  <td>{"Total Price"}</td>
-                  <td>{"Payment Date"}</td>
-                  <th>
-                    <button>Details</button>
+                  <td>
+                    ${(payment.paymentConfirmDetails.amount / 100).toFixed(2)}
+                  </td>
+                  <td>
+                    <p>{moment(payment.paymentDate).format("Do MMM YYYY")}</p>
+                    <p>{}</p>
+                  </td>
+                  <th className="flex justify-center">
+                    <button className="bg-[#D1A054] text-white px-4 py-1 rounded-full duration-300 active:scale-90">
+                      Details
+                    </button>
                   </th>
                 </tr>
               ))}
