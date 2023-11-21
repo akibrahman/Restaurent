@@ -47,7 +47,7 @@ const Dashboard = () => {
             {role === "General" && (
               <>
                 <li className="text-[#151515] font-medium">
-                  <NavLink to="/dashboard/">
+                  <NavLink to="/dashboard/user-home">
                     <FaHouse></FaHouse>User Home
                   </NavLink>
                 </li>
@@ -84,7 +84,7 @@ const Dashboard = () => {
             {role === "Admin" && (
               <>
                 <li className="text-[#151515] font-medium">
-                  <NavLink to="/">
+                  <NavLink to="/dashboard/admin-home">
                     <FaUserGroup />
                     Admin Home
                   </NavLink>

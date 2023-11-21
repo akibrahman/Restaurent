@@ -39,7 +39,7 @@ const NavBar = () => {
           <p className="text-white font-bold capitalize">our shop</p>
         </NavLink>
         {role === "Admin" ? (
-          <Link to="/dashboard/all-users">
+          <Link to="/dashboard/admin-home">
             <img className="w-9" src={settings} alt="" />
           </Link>
         ) : (
@@ -65,11 +65,21 @@ const NavBar = () => {
             <p className="text-white font-bold capitalize">Log In</p>
           </NavLink>
         )}
-        <img
-          className="rounded-full w-10 h-10"
-          src={user ? user.photoURL : noUser}
-          alt=""
-        />
+        <Link
+          to={
+            user
+              ? role === "Admin"
+                ? "/dashboard/admin-home"
+                : "/dashboard/user-home"
+              : "/login"
+          }
+        >
+          <img
+            className="rounded-full w-10 h-10"
+            src={user ? user.photoURL : noUser}
+            alt=""
+          />
+        </Link>
       </div>
     </nav>
   );
