@@ -1,10 +1,11 @@
 import { MdDelete } from "react-icons/md";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import Heading from "../../../Components/Heading";
 import useAxios from "../../../Hooks/useAxios";
 import useCart from "../../../Hooks/useCart";
 
-const Cart = () => {
+const MyCart = () => {
   const { carts, isLoading, refetch } = useCart();
   const axiosInstance = useAxios();
   const totalPrice = carts?.reduce((a, b) => a + b.price, 0);
@@ -46,11 +47,16 @@ const Cart = () => {
             Total Orders: {carts.length}
           </p>
           <p className="text-[#151515] text-2xl font-bold">
-            Total Price: {totalPrice}
+            Total Price: {totalPrice.toFixed(2)}
           </p>
-          <button className="bg-[#D1A054] px-2 py-1 rounded-md text-white font-semibold duration-300 active:scale-75">
-            Pay
-          </button>
+          <Link to="/dashboard/payment">
+            <button
+              disabled={totalPrice <= 0}
+              className="bg-[#D1A054] px-2 py-1 rounded-md text-white font-semibold duration-300 active:scale-75 disabled:bg-slate-300"
+            >
+              Pay
+            </button>
+          </Link>
         </div>
 
         {/* Table Start  */}
@@ -104,4 +110,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default MyCart;

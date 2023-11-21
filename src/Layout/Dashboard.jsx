@@ -3,18 +3,26 @@ import {
   FaCartShopping,
   FaHouse,
   FaUserGroup,
+  FaUtensils,
   FaWallet,
 } from "react-icons/fa6";
 import { MdRateReview } from "react-icons/md";
 import { RiReservedFill } from "react-icons/ri";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 import useRole from "../Hooks/useRole";
 
 const Dashboard = () => {
   const { role } = useRole();
-  // const isAdmin = true;
+  const location = useLocation();
   return (
-    <div className="drawer lg:drawer-open bg-[#F6F6F6]">
+    <div
+      className={`drawer lg:drawer-open  ${
+        location.pathname.includes("/dashboard/add-items") ||
+        location.pathname.includes("/dashboard/update-items")
+          ? "bg-white"
+          : "bg-[#F6F6F6]"
+      }`}
+    >
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col items-center justify-center">
         <Outlet></Outlet>
@@ -49,7 +57,7 @@ const Dashboard = () => {
                   </NavLink>
                 </li>
                 <li className="text-[#151515] font-medium">
-                  <NavLink to="/">
+                  <NavLink to="/dashboard/payment-history">
                     <FaWallet></FaWallet>Payment History
                   </NavLink>
                 </li>
@@ -82,13 +90,13 @@ const Dashboard = () => {
                   </NavLink>
                 </li>
                 <li className="text-[#151515] font-medium">
-                  <NavLink to="/">
-                    <FaUserGroup />
+                  <NavLink to="/dashboard/add-items">
+                    <FaUtensils />
                     Add Items
                   </NavLink>
                 </li>
                 <li className="text-[#151515] font-medium">
-                  <NavLink to="/">
+                  <NavLink to="/dashboard/manage-items">
                     <FaUserGroup />
                     Manage Items
                   </NavLink>

@@ -11,7 +11,7 @@ const AdminPrivate = ({ children }) => {
   else if (user && role === "Admin") {
     return children;
   } else {
-    return <Navigate to="/login" state={location.pathname}></Navigate>;
+    return <Navigate to="/" state={location.pathname}></Navigate>;
   }
 };
 
