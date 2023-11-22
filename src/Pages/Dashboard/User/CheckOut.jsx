@@ -5,7 +5,6 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
-import axios from "axios";
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Components/AuthProvider";
@@ -29,8 +28,8 @@ const CheckOut = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    axios
-      .post("http://localhost:1000/create-payment-intent", {
+    axiosInstance
+      .post("/create-payment-intent", {
         price: totalPrice || 1,
       })
       .then(async (response) => {
@@ -205,9 +204,9 @@ const CheckOut = () => {
           <p className="font-semibold text-green-600">{paymentMethod.id}</p>
         )}
         <button
-          className="bg-[#570DF8] px-10 py-3 rounded-md text-white font-semibold duration-300 active:scale-75"
+          className="bg-[#570DF8] px-10 py-3 rounded-md text-white font-semibold duration-300 active:scale-75 disabled:bg-slate-300"
           type="submit"
-          disabled={!stripe || !carts}
+          disabled={!stripe || !carts || !totalPrice == 0}
         >
           Pay by Card ${totalPrice}
         </button>

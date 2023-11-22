@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Components/AuthProvider";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:1000",
+  baseURL: `${import.meta.env.VITE_server_side_url}`,
 });
 const useAxios = () => {
   const { logOut } = useContext(AuthContext);
