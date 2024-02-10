@@ -40,7 +40,7 @@ const Dashboard = () => {
           className="drawer-overlay"
         ></label>
         <ul className="menu p-4 w-64 bg-[#D1A054] min-h-full  text-base-content font-cinzel">
-          <p className="text-2xl font-black text-center">Bistro Boss</p>
+          <p className="text-2xl font-black text-center">Akib Restaurant</p>
           <p className="font-bold text-center tracking-[7px]">Restaurant</p>
           <div className="mt-10">
             {/* User Panel  */}

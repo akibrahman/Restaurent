@@ -1,4 +1,5 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { FaSpinner } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
@@ -14,6 +15,7 @@ const NavBar = () => {
   const { role } = useRole();
   const axiosInstance = useAxiosPublic();
   const { carts, isLoading } = useCart();
+  const [loading, setLoading] = useState(false);
   const handleLogOut = () => {
     logOut()
       .then()
@@ -22,6 +24,8 @@ const NavBar = () => {
       });
   };
   const testClick = async () => {
+    setLoading(true);
+    await axiosInstance.post("/changing-db");
     const Toast = Swal.mixin({
       toast: true,
       position: "top-end",
@@ -33,20 +37,27 @@ const NavBar = () => {
         toast.onmouseleave = Swal.resumeTimer;
       },
     });
-    await axiosInstance.post("/changing-db");
-    await Toast.fire({
+
+    Toast.fire({
       icon: "success",
-      title: "Signed in successfully",
+      title: "Done",
     });
+    setLoading(false);
   };
   return (
     <nav className="bg-[rgba(21,21,21,0.5)] px-14 py-2 font-inter flex items-center justify-between absolute z-10 w-full">
-      <div onClick={testClick} className="font-cinzel">
-        <p className="text-white text-3xl font-black">Bistro Boss</p>
-        <p className="text-white first-letter: text-xl font-bold tracking-[7px]">
+      <div className="font-cinzel">
+        <p className="text-white text-3xl font-black">Akib Restaurant</p>
+        <p className="text-white first-letter: text-xl font-bold tracking-[7px] text-center">
           Restaurant
         </p>
       </div>
+      <button
+        onClick={testClick}
+        className="bg-white font-semibold px-4 py-2 rounded-md duration-300 active:scale-90 flex items-center gap-3"
+      >
+        DB Changer {loading && <FaSpinner className="animate-spin" />}
+      </button>
       <div className="flex items-center gap-4">
         <NavLink to="/">
           <p className="text-white font-bold capitalize">Home</p>
