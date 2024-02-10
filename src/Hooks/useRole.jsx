@@ -16,7 +16,7 @@ const useRole = () => {
       const responce = await axiosInstance.get(`/users/role/${user.email}`);
       return responce.data?.role;
     },
-    enabled: !!user?.email,
+    enabled: user ? true : false,
   });
   return { role, isLoading, refetch };
 };

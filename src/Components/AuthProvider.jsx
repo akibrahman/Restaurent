@@ -23,18 +23,18 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const un = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-        setUser(currentUser);
         axiosInstancePublic
           .post("/create-jwt", { email: currentUser.email })
           .then((res) => {
             if (res.data.token) {
               localStorage.setItem("token", res.data.token);
-            } else {
-              localStorage.removeItem("token");
+              setUser(currentUser);
             }
           });
       } else {
         setUser(null);
+        localStorage.removeItem("token");
+        // alert("Boom");
       }
       setLoading(false);
     });
