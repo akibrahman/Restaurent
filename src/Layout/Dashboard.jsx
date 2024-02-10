@@ -51,7 +51,7 @@ const Dashboard = () => {
                     <FaHouse></FaHouse>User Home
                   </NavLink>
                 </li>
-                <li className="text-[#151515] font-medium">
+                <li className="pointer-events-none text-[#dbd0d0] font-medium">
                   <NavLink to="/">
                     <FaCalendar></FaCalendar>Reservation
                   </NavLink>
@@ -66,13 +66,13 @@ const Dashboard = () => {
                     <FaCartShopping></FaCartShopping>My Cart
                   </NavLink>
                 </li>
-                <li className="text-[#151515] font-medium">
+                <li className="pointer-events-none text-[#dbd0d0] font-medium">
                   <NavLink to="/">
                     <MdRateReview />
                     Add Review
                   </NavLink>
                 </li>
-                <li className="text-[#151515] font-medium">
+                <li className="pointer-events-none text-[#dbd0d0] font-medium">
                   <NavLink to="/">
                     <RiReservedFill />
                     My Bookings
@@ -101,7 +101,7 @@ const Dashboard = () => {
                     Manage Items
                   </NavLink>
                 </li>
-                <li className="text-[#151515] font-medium">
+                <li className="pointer-events-none text-[#dbd0d0] font-medium">
                   <NavLink to="/">
                     <FaUserGroup />
                     Manage Bookings
