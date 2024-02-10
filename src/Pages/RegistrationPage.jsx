@@ -32,7 +32,7 @@ const RegistrationPage = () => {
       };
     });
   };
-  const handleInput = async () => {
+  const handleInput = async (event) => {
     const base64 = await convertBase64(event.target.files[0]);
     setPreview(base64);
   };

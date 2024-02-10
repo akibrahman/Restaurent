@@ -29,16 +29,17 @@ const AuthProvider = ({ children }) => {
           .then((res) => {
             if (res.data.token) {
               localStorage.setItem("token", res.data.token);
+            } else {
+              localStorage.removeItem("token");
             }
           });
       } else {
         setUser(null);
-        localStorage.removeItem("token");
       }
       setLoading(false);
     });
     return () => un();
-  }, [auth]);
+  }, [auth, axiosInstancePublic]);
   //! Registration
   const registration = (email, password) => {
     setLoading(true);

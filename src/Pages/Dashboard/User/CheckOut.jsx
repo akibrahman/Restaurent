@@ -206,7 +206,7 @@ const CheckOut = () => {
         <button
           className="bg-[#570DF8] px-10 py-3 rounded-md text-white font-semibold duration-300 active:scale-75 disabled:bg-slate-300"
           type="submit"
-          disabled={!stripe || !carts || !totalPrice == 0}
+          disabled={!stripe || !carts || totalPrice == 0}
         >
           Pay by Card ${totalPrice}
         </button>

@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import Swal from "sweetalert2";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 import useCart from "../Hooks/useCart";
 import useRole from "../Hooks/useRole";
 import { AuthContext } from "./AuthProvider";
@@ -10,6 +12,7 @@ import noUser from "/icon/user.png";
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
   const { role } = useRole();
+  const axiosInstance = useAxiosPublic();
   const { carts, isLoading } = useCart();
   const handleLogOut = () => {
     logOut()
@@ -18,9 +21,27 @@ const NavBar = () => {
         console.log(error);
       });
   };
+  const testClick = async () => {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 1000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      },
+    });
+    await axiosInstance.post("/changing-db");
+    await Toast.fire({
+      icon: "success",
+      title: "Signed in successfully",
+    });
+  };
   return (
     <nav className="bg-[rgba(21,21,21,0.5)] px-14 py-2 font-inter flex items-center justify-between absolute z-10 w-full">
-      <div className="font-cinzel">
+      <div onClick={testClick} className="font-cinzel">
         <p className="text-white text-3xl font-black">Bistro Boss</p>
         <p className="text-white first-letter: text-xl font-bold tracking-[7px]">
           Restaurant
