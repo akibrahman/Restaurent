@@ -141,7 +141,7 @@ const LoginPage = () => {
           </div>
           <button
             className="w-[420px] rounded-md py-3 font-semibold text-white bg-[#D1A054] duration-300 select-none cursor-pointer active:scale-90 disabled:bg-slate-300 disabled:pointer-events-none"
-            disabled={captchaMatched}
+            disabled={!captchaMatched}
           >
             Log In
           </button>

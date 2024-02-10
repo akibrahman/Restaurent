@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import { FaSpinner } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
@@ -52,12 +51,12 @@ const NavBar = () => {
           Restaurant
         </p>
       </div>
-      <button
+      {/* <button
         onClick={testClick}
         className="bg-white font-semibold px-4 py-2 rounded-md duration-300 active:scale-90 flex items-center gap-3"
       >
         DB Changer {loading && <FaSpinner className="animate-spin" />}
-      </button>
+      </button> */}
       <div className="flex items-center gap-4">
         <NavLink to="/">
           <p className="text-white font-bold capitalize">Home</p>

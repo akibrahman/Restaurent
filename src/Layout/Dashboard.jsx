@@ -39,7 +39,7 @@ const Dashboard = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu p-4 w-64 bg-[#D1A054] min-h-full  text-base-content font-cinzel">
+        <ul className="menu p-4 w-64 bg-[#fff] border-r-2 min-h-full  text-base-content font-cinzel">
           <p className="text-2xl font-black text-center">Akib Restaurant</p>
           <p className="font-bold text-center tracking-[7px]">Restaurant</p>
           <div className="mt-10">
