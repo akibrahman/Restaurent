@@ -16,6 +16,7 @@ import MenuPage from "../Pages/MenuPage";
 import RegistrationPage from "../Pages/RegistrationPage";
 import ShopPage from "../Pages/ShopPage";
 import AdminPrivate from "./AdminPrivate";
+import Contact from "./Contact";
 import Private from "./Private";
 
 export const router = createBrowserRouter([
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
       {
         path: "menu",
         element: <MenuPage></MenuPage>,
+      },
+      {
+        path: "contact",
+        element: <Contact></Contact>,
       },
       {
         path: "shop/:id",

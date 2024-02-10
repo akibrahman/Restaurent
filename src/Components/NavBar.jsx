@@ -61,13 +61,14 @@ const NavBar = () => {
         <NavLink to="/">
           <p className="text-white font-bold capitalize">Home</p>
         </NavLink>
-        <p className="text-white font-bold capitalize">contact us</p>
-        <p className="text-white font-bold capitalize">dashboard</p>
+        <NavLink to="/contact">
+          <p className="text-white font-bold capitalize">Contact Us</p>
+        </NavLink>
         <NavLink to="/menu">
-          <p className="text-white font-bold capitalize">our menu</p>
+          <p className="text-white font-bold capitalize">Our menu</p>
         </NavLink>
         <NavLink to="/shop/salad">
-          <p className="text-white font-bold capitalize">our shop</p>
+          <p className="text-white font-bold capitalize">Our shop</p>
         </NavLink>
         {role === "Admin" ? (
           <Link to="/dashboard/admin-home">
