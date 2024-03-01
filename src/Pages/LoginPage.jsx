@@ -26,6 +26,8 @@ const LoginPage = () => {
   const [captchaMatched, setCaptchaMatched] = useState(false);
   const [captchaAlert, setCaptchaAlert] = useState(false);
   const [captchaSuccess, setCaptchaSuccess] = useState(false);
+  const [loading, setLoading] = useState(true);
+
   //!
   useEffect(() => {
     loadCaptchaEnginge(7);
@@ -68,91 +70,102 @@ const LoginPage = () => {
         <div className="flex-1">
           <img className="w-[65%] mx-auto" src={img} alt="" />
         </div>
-        <form
-          onSubmit={handleSubmit(handleLogin)}
-          className="flex-1 bg-red600 flex flex-col items-center  gap-2"
-        >
-          <p className="text-[#151515] text-4xl font-bold">Login</p>
-          <div className="flex flex-col gap-2">
-            <label className="text-[#444444] text-lg font-semibold">
-              Email
-            </label>
-            <input
-              className="text-[#444] px-7 py-3 rounded-md border w-[420px] focus:outline-none"
-              placeholder="Enter Email"
-              {...register("email", {
-                required: true,
-                pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-              })}
-            />
-            {errors.email?.type === "required" && (
-              <span>E-mail is Required</span>
-            )}
-            {errors.email?.type === "pattern" && (
-              <span>Enter Valid E-maild</span>
-            )}
-          </div>
-          <div className="flex flex-col gap-2">
-            <label className="text-[#444444] text-lg font-semibold">
-              Password
-            </label>
-            <input
-              className="text-[#444] px-7 py-3 rounded-md border w-[420px] focus:outline-none"
-              placeholder="Enter Password"
-              type="password"
-              {...register("password", {
-                required: true,
-                minLength: 6,
-              })}
-            />
-            {errors.password?.type === "required" && (
-              <span>Password is Required</span>
-            )}
-            {errors.password?.type === "minLength" && (
-              <span>Wrong Invalid</span>
-            )}
-          </div>
-          <input
-            className="text-[#444] px-7 py-3 rounded-md border w-[420px] focus:outline-none"
-            placeholder="Enter Captcha"
-            onChange={captchaChecker}
-            type="text"
-            ref={captchaField}
-          />
-          <div
-            onClick={() => {
-              setCaptchaMatched(false);
-              captchaField.current.value = "";
-            }}
-            className="w-[420px] select-none flex gap-6"
+        <div className="flex-1 bg-red600">
+          <form
+            onSubmit={handleSubmit(handleLogin)}
+            className={`${
+              loading ? "hidden" : "flex"
+            } flex-col items-center  gap-2`}
           >
-            <LoadCanvasTemplate reloadColor="#D1A054" />
+            <p className="text-[#151515] text-4xl font-bold">Login</p>
+            <div className="flex flex-col gap-2">
+              <label className="text-[#444444] text-lg font-semibold">
+                Email
+              </label>
+              <input
+                className="text-[#444] px-7 py-3 rounded-md border w-[420px] focus:outline-none"
+                placeholder="Enter Email"
+                {...register("email", {
+                  required: true,
+                  pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                })}
+              />
+              {errors.email?.type === "required" && (
+                <span>E-mail is Required</span>
+              )}
+              {errors.email?.type === "pattern" && (
+                <span>Enter Valid E-maild</span>
+              )}
+            </div>
+            <div className="flex flex-col gap-2">
+              <label className="text-[#444444] text-lg font-semibold">
+                Password
+              </label>
+              <input
+                className="text-[#444] px-7 py-3 rounded-md border w-[420px] focus:outline-none"
+                placeholder="Enter Password"
+                type="password"
+                {...register("password", {
+                  required: true,
+                  minLength: 6,
+                })}
+              />
+              {errors.password?.type === "required" && (
+                <span>Password is Required</span>
+              )}
+              {errors.password?.type === "minLength" && (
+                <span>Wrong Invalid</span>
+              )}
+            </div>
+            <input
+              className="text-[#444] px-7 py-3 rounded-md border w-[420px] focus:outline-none"
+              placeholder="Enter Captcha"
+              onChange={captchaChecker}
+              type="text"
+              ref={captchaField}
+            />
+            <div
+              onClick={() => {
+                setCaptchaMatched(false);
+                captchaField.current.value = "";
+              }}
+              className="w-[420px] select-none flex gap-6"
+            >
+              <LoadCanvasTemplate reloadColor="#D1A054" />
 
-            {captchaAlert && (
-              <span className="text-sm text-red-600 font-semibold flex items-center gap-1">
-                <FaCircleExclamation /> Captcha Changed
-              </span>
-            )}
-            {captchaSuccess && (
-              <span className="text-sm text-green-600 font-semibold flex items-center gap-1">
-                <FaCircleExclamation /> Captcha Matched
-              </span>
-            )}
+              {captchaAlert && (
+                <span className="text-sm text-red-600 font-semibold flex items-center gap-1">
+                  <FaCircleExclamation /> Captcha Changed
+                </span>
+              )}
+              {captchaSuccess && (
+                <span className="text-sm text-green-600 font-semibold flex items-center gap-1">
+                  <FaCircleExclamation /> Captcha Matched
+                </span>
+              )}
+            </div>
+            <button
+              className="w-[420px] rounded-md py-3 font-semibold text-white bg-[#D1A054] duration-300 select-none cursor-pointer active:scale-90 disabled:bg-slate-300 disabled:pointer-events-none"
+              disabled={!captchaMatched}
+            >
+              Log In
+            </button>
+            <Link to="/registration">
+              <p className="text-[#D1A054] font-medium">
+                New here?{" "}
+                <span className="font-bold">Create a New Account</span>
+              </p>
+            </Link>
+          </form>
+
+          <div className="flex flex-col items-center justify-center gap-3 mt-3">
+            <p className="text-[#444] font-medium">Or sign in with</p>
+            <SocialLogin
+              loading={loading}
+              setLoading={setLoading}
+            ></SocialLogin>
           </div>
-          <button
-            className="w-[420px] rounded-md py-3 font-semibold text-white bg-[#D1A054] duration-300 select-none cursor-pointer active:scale-90 disabled:bg-slate-300 disabled:pointer-events-none"
-            disabled={!captchaMatched}
-          >
-            Log In
-          </button>
-          <Link to="/registration">
-            <p className="text-[#D1A054] font-medium">
-              New here? <span className="font-bold">Create a New Account</span>
-            </p>
-          </Link>
-          <p className="text-[#444] font-medium">Or sign in with</p>
-          <SocialLogin></SocialLogin>
-        </form>
+        </div>
       </div>
     </div>
   );

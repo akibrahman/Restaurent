@@ -16,8 +16,10 @@ import MenuPage from "../Pages/MenuPage";
 import RegistrationPage from "../Pages/RegistrationPage";
 import ShopPage from "../Pages/ShopPage";
 import AdminPrivate from "./AdminPrivate";
+import Akib from "./Akib";
 import Contact from "./Contact";
 import Private from "./Private";
+import Sourov from "./Sourov";
 
 export const router = createBrowserRouter([
   {
@@ -47,6 +49,14 @@ export const router = createBrowserRouter([
       {
         path: "registration",
         element: <RegistrationPage></RegistrationPage>,
+      },
+      {
+        path: "akib",
+        element: <Akib></Akib>,
+      },
+      {
+        path: "sourov",
+        element: <Sourov></Sourov>,
       },
     ],
   },
